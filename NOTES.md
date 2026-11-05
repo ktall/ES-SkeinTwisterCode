@@ -45,7 +45,29 @@ owner before any flash.
 4. **Measure the limits**: current in a shunt or clamp meter on the motor line: running, tight skein, full stall. Tells us how far finding 1 really goes.
 5. **Only then flash** our builds. The backup (or the repo's .hex) gets it back to stock.
 
-To buy: ISP programmer (USBasp or USBtinyISP), USB-serial adapter, Hirose DF13 cables (6-pin for J1, 3-pin for J5; pinouts from the schematic).
+## Shopping list (2026-11-06, owner has a multimeter and a soldering iron)
+
+Prices are rough, to check when buying.
+
+**Needed for the bench plan**
+
+1. ISP programmer, USBasp or USBtinyISP: ~10 €
+2. USB-serial adapter, 5 V (FT232RL or CP2102): ~10 €
+3. Hirose DF13 cables, 6-pin (J1) and 3-pin (J5): housings + pre-crimped wires, ~10 €. Pinouts from the schematic
+4. DC clamp meter (e.g. UNI-T UT210E): ~40 €. Reads motor current without cutting wires, safe at stall currents that would blow a multimeter fuse
+5. Spare motor TS-40GZ868 12 V 160 rpm (AliExpress): ~20 €. Stall tests without abusing the wife's unit
+
+**Strongly recommended**
+
+6. Bench power supply with current limit, 30 V / 10 A (e.g. Riden RD6012 or similar): ~100 to 150 €. Emulates a 5 A or 6 A supply on demand, protects the board during tests
+7. Logic analyzer, 8 channels 24 MHz clone + PulseView: ~10 €. PWM, serial, pedal timings
+
+**Nice to have**
+
+8. Oscilloscope, 2 to 4 channels (entry Rigol or similar): ~300 to 400 €. Voltage sag at stall, brown-out resets, motor noise (EMC hints)
+9. SMD kit: hot air station, fine tweezers, flux, solder wick, desoldering braid: ~80 €
+10. Magnifier or USB microscope: ~30 to 50 €
+11. Luggage scale + a lever arm: cheap torque gauge for "how tight is tight"
 
 ## Findings
 
