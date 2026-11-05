@@ -34,6 +34,19 @@ on/off mode blips the motor first to say "this one won't stop by itself".
 Small, readable, well commented, single main loop with a state machine. Classic
 embedded style (globals, busy waits). Nothing to be ashamed of; easy to own.
 
+## Bench plan: the existing unit as a dev board
+
+It's the wife's machine: back everything up before touching it, and ask the
+owner before any flash.
+
+1. **Check it runs**: power on, LED blinks every 0.5 s = firmware alive. Try the three modes.
+2. **Read it without changing anything**: USB-serial adapter (5 V, FTDI style) on J5, 9600 baud, send `d` (in the first 5 minutes): version + usage stats (number of runs, total time). Real usage data for free.
+3. **Back up the chip**: ISP programmer on J1, AVRDude reads flash, EEPROM and fuses to files. Flash may be lock-protected; EEPROM and fuses should still read.
+4. **Measure the limits**: current in a shunt or clamp meter on the motor line: running, tight skein, full stall. Tells us how far finding 1 really goes.
+5. **Only then flash** our builds. The backup (or the repo's .hex) gets it back to stock.
+
+To buy: ISP programmer (USBasp or USBtinyISP), USB-serial adapter, Hirose DF13 cables (6-pin for J1, 3-pin for J5; pinouts from the schematic).
+
 ## Findings
 
 1. **No stall protection.** When the skein is tight the motor stalls and keeps drawing stall current until the timer ends: up to 7.8 s in automatic, 30 s in tap mode, unlimited in press & hold. Heat for the motor, the MOSFET and the power supply. Nothing on the board measures current, so firmware alone can't fix it.
